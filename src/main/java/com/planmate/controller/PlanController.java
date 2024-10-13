@@ -26,7 +26,7 @@ public class PlanController {
 
     // 일정 조회 (단건)
     @GetMapping("/api/plan/{plan-id}")
-    public PlanResponseDto getPlan(@PathVariable("plan-id") long planId) {
+    public PlanResponseDto getPlan(@PathVariable("plan-id") Long planId) {
         return planService.getPlan(planId);
     }
 
@@ -38,13 +38,13 @@ public class PlanController {
 
     // 일정 수정
     @PatchMapping("/api/plan/{plan-id}")
-    public PlanResponseDto updatePlan(@PathVariable("plan-id") long planId, @RequestBody PlanRequestDto planRequestDto) {
+    public PlanResponseDto updatePlan(@PathVariable("plan-id") Long planId, @RequestBody PlanRequestDto planRequestDto) {
         return planService.updatePlan(planId, planRequestDto);
     }
 
     // 일정 삭제
     @DeleteMapping("/api/plan/{plan-id}")
-    public void deletePlan(@PathVariable("plan-id") long planId) {
+    public void deletePlan(@PathVariable("plan-id") Long planId) {
         planService.deletePlan(planId);
     }
 

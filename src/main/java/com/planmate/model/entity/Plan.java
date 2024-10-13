@@ -19,7 +19,7 @@ public class Plan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long planId;
+    private Long planId;
 
     @Column
     private String username;

@@ -19,7 +19,7 @@ public class PlanService {
         return null;
     }
 
-    public PlanResponseDto getPlan(long planId) {
+    public PlanResponseDto getPlan(Long planId) {
         return null;
     }
 
@@ -27,11 +27,11 @@ public class PlanService {
         return null;
     }
 
-    public PlanResponseDto updatePlan(long planId, PlanRequestDto planRequestDto) {
+    public PlanResponseDto updatePlan(Long planId, PlanRequestDto planRequestDto) {
         return null;
     }
 
-    public void deletePlan(long planId) {
+    public void deletePlan(Long planId) {
 
     }
 }
