@@ -2,9 +2,7 @@ package com.planmate.model.entity;
 
 import com.planmate.model.dto.PlanResponseDto;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +11,8 @@ import java.time.LocalDateTime;
  * @package : com.planmate.model.entity
  * @since : 2024. 10. 13.
  */
+@Builder
+@AllArgsConstructor
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
