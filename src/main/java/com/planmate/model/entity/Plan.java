@@ -1,5 +1,6 @@
 package com.planmate.model.entity;
 
+import com.planmate.model.dto.PlanResponseDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -36,4 +37,14 @@ public class Plan {
     @Column
     private LocalDateTime updateDate;
 
+    public PlanResponseDto toDto() {
+        PlanResponseDto planResponseDto = PlanResponseDto.builder()
+                .planId(planId)
+                .username(username)
+                .title(title)
+                .content(content)
+                .build();
+
+        return planResponseDto;
+    }
 }
