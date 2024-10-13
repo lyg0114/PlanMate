@@ -20,26 +20,26 @@ public class PlanController {
 
     // 일정 조회 (페이징)
     public Page<PlanResponseDto> searchPlan(PlanRequestDto planRequestDto) {
-        return null;
+        return planService.searchPlan(planRequestDto);
     }
 
     // 일정 조회 (단건)
     public PlanResponseDto getPlan(long planId) {
-        return null;
+        return planService.getPlan(planId);
     }
 
     // 일정 생성
     public PlanResponseDto createPlan(PlanRequestDto planRequestDto) {
-        return null;
+        return planService.createPlan(planRequestDto);
     }
 
     // 일정 수정
     public PlanResponseDto updatePlan(long planId, PlanRequestDto planRequestDto) {
-        return null;
+        return planService.updatePlan(planId, planRequestDto);
     }
 
     // 일정 삭제
     public void deletePlan(long planId) {
-
+        planService.deletePlan(planId);
     }
 }

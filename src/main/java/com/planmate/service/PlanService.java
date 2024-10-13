@@ -1,6 +1,9 @@
 package com.planmate.service;
 
+import com.planmate.model.dto.PlanRequestDto;
+import com.planmate.model.dto.PlanResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,4 +14,24 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class PlanService {
+
+    public Page<PlanResponseDto> searchPlan(PlanRequestDto planRequestDto) {
+        return null;
+    }
+
+    public PlanResponseDto getPlan(long planId) {
+        return null;
+    }
+
+    public PlanResponseDto createPlan(PlanRequestDto planRequestDto) {
+        return null;
+    }
+
+    public PlanResponseDto updatePlan(long planId, PlanRequestDto planRequestDto) {
+        return null;
+    }
+
+    public void deletePlan(long planId) {
+
+    }
 }
