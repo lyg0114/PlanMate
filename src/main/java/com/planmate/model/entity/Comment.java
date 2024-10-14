@@ -1,5 +1,7 @@
 package com.planmate.model.entity;
 
+import com.planmate.model.dto.CommentRequestDto;
+import com.planmate.model.dto.CommentResponseDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -40,4 +42,11 @@ public class Comment {
     @Column(name = "update_date")
     private LocalDateTime updateDate;
 
+    public CommentResponseDto toDto() {
+        return null;
+    }
+
+    public void updateContent(CommentRequestDto commentRequestDto) {
+
+    }
 }
