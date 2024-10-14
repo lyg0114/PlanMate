@@ -5,6 +5,7 @@ import com.planmate.model.dto.PlanResponseDto;
 import com.planmate.service.PlanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -20,8 +21,8 @@ public class PlanController {
 
     // 일정 조회 (페이징)
     @GetMapping("/api/plan/search")
-    public Page<PlanResponseDto> searchPlan(@RequestBody PlanRequestDto planRequestDto) {
-        return planService.searchPlan(planRequestDto);
+    public Page<PlanResponseDto> searchPlan(Pageable pageable) {
+        return planService.getPage(pageable);
     }
 
     // 일정 조회 (단건)
