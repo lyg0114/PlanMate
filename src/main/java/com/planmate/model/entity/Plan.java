@@ -1,5 +1,6 @@
 package com.planmate.model.entity;
 
+import com.planmate.model.dto.PlanRequestDto;
 import com.planmate.model.dto.PlanResponseDto;
 import jakarta.persistence.*;
 import lombok.*;
@@ -46,5 +47,21 @@ public class Plan {
                 .build();
 
         return planResponseDto;
+    }
+
+    public void updatePlan(PlanRequestDto planRequestDto) {
+        updateDate = LocalDateTime.now();
+
+        if (planRequestDto.getUsername() != null ) {
+            username = planRequestDto.getUsername();
+        }
+
+        if (planRequestDto.getTitle() != null) {
+            title = planRequestDto.getTitle();
+        }
+
+        if (planRequestDto.getContent() != null) {
+            content = planRequestDto.getContent();
+        }
     }
 }

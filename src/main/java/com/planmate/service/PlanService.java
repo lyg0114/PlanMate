@@ -38,10 +38,13 @@ public class PlanService {
     }
 
     public PlanResponseDto updatePlan(Long planId, PlanRequestDto planRequestDto) {
-        return null;
+        Plan findPlan = planRepository.findById(planId).get();
+        findPlan.updatePlan(planRequestDto);
+        Plan updatedPlan = planRepository.save(findPlan);
+        return updatedPlan.toDto();
     }
 
     public void deletePlan(Long planId) {
-
+        planRepository.deleteById(planId);
     }
 }
