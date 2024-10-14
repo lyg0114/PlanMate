@@ -29,8 +29,12 @@ public class PlanService {
         return findPlanDto;
     }
 
+    // planRequestDto -> plan
     public PlanResponseDto createPlan(PlanRequestDto planRequestDto) {
-        return null;
+        Plan plan = planRequestDto.toEntity();
+        Plan savePlan = planRepository.save(plan);
+        PlanResponseDto saveddto = savePlan.toDto();
+        return saveddto;
     }
 
     public PlanResponseDto updatePlan(Long planId, PlanRequestDto planRequestDto) {
