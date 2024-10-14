@@ -6,6 +6,10 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import static jakarta.persistence.FetchType.LAZY;
 
 /**
  * @author : leeyounggyo
@@ -13,48 +17,46 @@ import java.time.LocalDateTime;
  * @since : 2024. 10. 13.
  */
 @Builder
-@AllArgsConstructor
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Plan {
 
     @Id
+    @Column(name = "plan_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long planId;
 
-    @Column
-    private String username;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column
+    @OneToMany(mappedBy = "plan")
+    private List<Comment> comments = new ArrayList<>();
+
+    @Column(name = "title")
     private String title;
 
-    @Column
+    @Column(name = "content")
     private String content;
 
-    @Column
+    @Column(name = "create_date")
     private LocalDateTime createDate;
 
-    @Column
+    @Column(name = "update_date")
     private LocalDateTime updateDate;
 
     public PlanResponseDto toDto() {
-        PlanResponseDto planResponseDto = PlanResponseDto.builder()
+        return PlanResponseDto.builder()
                 .planId(planId)
-                .username(username)
                 .title(title)
                 .content(content)
                 .build();
-
-        return planResponseDto;
     }
 
     public void updatePlan(PlanRequestDto planRequestDto) {
         updateDate = LocalDateTime.now();
-
-        if (planRequestDto.getUsername() != null ) {
-            username = planRequestDto.getUsername();
-        }
 
         if (planRequestDto.getTitle() != null) {
             title = planRequestDto.getTitle();

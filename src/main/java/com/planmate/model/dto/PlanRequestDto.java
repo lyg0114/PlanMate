@@ -1,6 +1,8 @@
 package com.planmate.model.dto;
 
 import com.planmate.model.entity.Plan;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 /**
@@ -8,7 +10,9 @@ import lombok.Getter;
  * @package : com.planmate.model.dto
  * @since : 2024. 10. 13.
  */
+@Builder
 @Getter
+@AllArgsConstructor
 public class PlanRequestDto {
 
     private String username;
@@ -18,12 +22,9 @@ public class PlanRequestDto {
     private String content;
 
     public Plan toEntity() {
-        Plan plan = Plan.builder()
-                .username(username)
+        return Plan.builder()
                 .title(title)
                 .content(content)
                 .build();
-
-        return plan;
     }
 }

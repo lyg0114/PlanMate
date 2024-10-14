@@ -1,5 +1,6 @@
 package com.planmate.model.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -8,8 +9,9 @@ import lombok.Getter;
  * @package : com.planmate.model.dto
  * @since : 2024. 10. 13.
  */
-@Getter
 @Builder
+@Getter
+@AllArgsConstructor
 public class PlanResponseDto {
 
     private Long planId;
