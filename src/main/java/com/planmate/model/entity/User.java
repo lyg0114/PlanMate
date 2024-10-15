@@ -1,5 +1,7 @@
 package com.planmate.model.entity;
 
+import com.planmate.model.dto.UserRequestDto;
+import com.planmate.model.dto.UserResponseDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -46,4 +48,16 @@ public class User {
     @Column(name = "update_date")
     private LocalDateTime updateDate;
 
+    public UserResponseDto toDto() {
+        return UserResponseDto.builder()
+                .username(username)
+                .email(email)
+                .build();
+    }
+
+    public void updateUser(UserRequestDto userRequestDto) {
+        if (userRequestDto.getUsername() != null) {
+            username = userRequestDto.getUsername();
+        }
+    }
 }
