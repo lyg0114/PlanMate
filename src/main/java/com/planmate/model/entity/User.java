@@ -2,10 +2,7 @@ package com.planmate.model.entity;
 
 import com.planmate.model.dto.UserRequestDto;
 import com.planmate.model.dto.UserResponseDto;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -25,6 +22,7 @@ public class User {
 
     @Id
     @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
     @OneToMany(mappedBy = "user")

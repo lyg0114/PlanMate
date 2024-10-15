@@ -22,6 +22,7 @@ import static jakarta.persistence.FetchType.LAZY;
 public class Comment {
 
     @Id
+    @Column(name = "comment_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
 
