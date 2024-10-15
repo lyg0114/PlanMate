@@ -27,7 +27,7 @@ public class UserController {
     // 사용자 조회 (단건)
     @GetMapping("/api/user/{user-id}")
     public UserResponseDto getUser(@PathVariable("user-id") Long userId) {
-        return userService.getUser(userId);
+        return userService.getUserToken(userId);
     }
 
     // 사용자 생성

@@ -19,6 +19,11 @@ public class CommentController {
 
     private final CommentService commentService;
 
+    @GetMapping("/api/test")
+    public String searchCommentByPlan() {
+        return "SUCCESS";
+    }
+
     @GetMapping("/api/comment/plan/{plan-id}")
     public Page<CommentResponseDto> searchCommentByPlan(@PathVariable("plan-id") Long planId, Pageable pageable) {
         return commentService.searchCommentByPlan(planId, pageable);

@@ -1,5 +1,6 @@
 package com.planmate.model.dto;
 
+import com.planmate.config.PwEncoder;
 import com.planmate.model.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,11 +22,11 @@ public class UserRequestDto {
     private String username;
     private String password;
 
-    public User toEntity() {
+    public User toEntity(PwEncoder pwEncoder) {
         return User.builder()
                 .username(username)
                 .email(email)
-                .password(password)
+                .password(pwEncoder.encryptPassword(password))
                 .createDate(LocalDateTime.now())
                 .build();
     }
