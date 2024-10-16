@@ -1,6 +1,7 @@
 package com.planmate.model.dto;
 
 import com.planmate.config.PwEncoder;
+import com.planmate.model.define.Role;
 import com.planmate.model.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,6 +22,7 @@ public class UserRequestDto {
     private String email;
     private String username;
     private String password;
+    private String role;
 
     public User toEntity(PwEncoder pwEncoder) {
         return User.builder()
@@ -28,6 +30,16 @@ public class UserRequestDto {
                 .email(email)
                 .password(pwEncoder.encryptPassword(password))
                 .createDate(LocalDateTime.now())
+                .role(getRole())
                 .build();
     }
+
+    private Role getRole() {
+        if (role.equalsIgnoreCase("admin")) {
+            return Role.ADMIN;
+        } else {
+            return Role.USER;
+        }
+    }
+
 }

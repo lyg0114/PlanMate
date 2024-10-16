@@ -1,8 +1,10 @@
 package com.planmate.auth;
 
+import com.planmate.model.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -12,15 +14,17 @@ import java.util.Date;
  * @package : com.planmate.auth
  * @since : 2024. 10. 14.
  */
+@Slf4j
 @Component
 public class JwtTokenProvider {
 
     private final String secretKey = "TTTOPSECRETKEYTOPSECRETKEYTOPSECRETKEYTOPSECRETKEYTOPSECRETKEYOPSECRETKEYTTOPSECRETKEYTOPSECRETKEYTOPSECRETKEYTOPSECRETKEYTOPSECRETKEYOPSECRETKEYTTOPSECRETKEYTOPSECRETKEYTOPSECRETKEYTOPSECRETKEYTOPSECRETKEYOPSECRETKEYTOPSECRETKEYTOPSECRETKEYTOPSECRETKEYTOPSECRETKEYTOPSECRETKEYOPSECRETKEY";
     private final long validityInMilliseconds = 3600000; // 1시간
 
-    public String createToken(String email, String username) {
+    public String createToken(User user) {
         Claims claims = Jwts.claims()
-                .setSubject(email + "-" + username);
+                .setSubject(user.getEmail());
+        claims.put("role", user.getRole().toString());
 
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
@@ -33,11 +37,21 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    public String getUsernameFromToken(String token) {
+    public String getUserName(String token) {
         return Jwts.parser()
                 .setSigningKey(secretKey)
-                .parseClaimsJws(token).getBody()
+                .parseClaimsJws(token)
+                .getBody()
                 .getSubject();
+    }
+
+    public String getRole(String token) {
+        return (String) Jwts.parser()
+                .setSigningKey(secretKey)
+                .parseClaimsJws(token)
+                .getBody()
+                .get("role")
+                ;
     }
 
     public boolean validateToken(String token) {

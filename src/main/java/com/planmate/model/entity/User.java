@@ -1,11 +1,13 @@
 package com.planmate.model.entity;
 
+import com.planmate.model.define.Role;
 import com.planmate.model.dto.UserRequestDto;
 import com.planmate.model.dto.UserResponseDto;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,9 +16,9 @@ import java.util.List;
  * @since : 2024. 10. 13.
  */
 @Builder
-@AllArgsConstructor
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Entity
 public class User {
 
@@ -27,11 +29,11 @@ public class User {
 
     @Builder.Default
     @OneToMany(mappedBy = "user")
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
 
     @Builder.Default
     @OneToMany(mappedBy = "user")
-    private List<Plan> plans;
+    private List<Plan> plans = new ArrayList<>();
 
     @Column(name = "username")
     private String username;
@@ -47,6 +49,10 @@ public class User {
 
     @Column(name = "update_date")
     private LocalDateTime updateDate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private Role role;
 
     public UserResponseDto toDto() {
         return UserResponseDto.builder()

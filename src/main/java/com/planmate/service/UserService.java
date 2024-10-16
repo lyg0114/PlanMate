@@ -69,7 +69,7 @@ public class UserService {
 
         return UserInfo.builder()
                 .email(user.getEmail())
-                .token(jwtTokenProvider.createToken(user.getEmail(), user.getUsername()))
+                .token(jwtTokenProvider.createToken(user))
                 .build();
     }
 
