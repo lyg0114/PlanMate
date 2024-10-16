@@ -3,6 +3,7 @@ package com.planmate.controller;
 import com.planmate.model.dto.PlanRequestDto;
 import com.planmate.model.dto.PlanResponseDto;
 import com.planmate.service.PlanService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,7 +34,7 @@ public class PlanController {
 
     // 일정 생성
     @PostMapping("/api/plan")
-    public PlanResponseDto createPlan(@RequestBody PlanRequestDto planRequestDto) {
+    public PlanResponseDto createPlan(@RequestBody @Valid PlanRequestDto planRequestDto) {
         return planService.createPlan(planRequestDto);
     }
 

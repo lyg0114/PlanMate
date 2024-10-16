@@ -3,6 +3,7 @@ package com.planmate.model.dto;
 import com.planmate.config.PwEncoder;
 import com.planmate.model.define.Role;
 import com.planmate.model.entity.User;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class UserRequestDto {
 
+    @Email
     private String email;
     private String username;
     private String password;

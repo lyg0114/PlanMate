@@ -15,8 +15,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public class PlanRequestDto {
 
-    private String username;
-
     private String title;
 
     private String content;

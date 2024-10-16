@@ -13,6 +13,8 @@ import lombok.Getter;
 @Builder
 @AllArgsConstructor
 public class UserInfo {
-    String email;
-    String token;
+
+    private String email;
+    private String token;
+
 }
