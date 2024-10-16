@@ -50,4 +50,16 @@ public class Comment {
     public void updateContent(CommentRequestDto commentRequestDto) {
 
     }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId=" + commentId +
+                ", plan=" + plan.getTitle() +
+                ", user=" + user.getEmail() +
+                ", commentContent='" + commentContent + '\'' +
+                ", createDate=" + createDate +
+                ", updateDate=" + updateDate +
+                '}';
+    }
 }

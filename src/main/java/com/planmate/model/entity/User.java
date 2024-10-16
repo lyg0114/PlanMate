@@ -25,9 +25,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
+    @Builder.Default
     @OneToMany(mappedBy = "user")
     private List<Comment> comments;
 
+    @Builder.Default
     @OneToMany(mappedBy = "user")
     private List<Plan> plans;
 
