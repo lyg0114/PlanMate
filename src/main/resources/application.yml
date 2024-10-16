@@ -1,14 +1,52 @@
+#spring:
+#  application:
+#    name: planmate
+#  jpa:
+#    generate-ddl: false
+#    hibernate:
+#      ddl-auto: create
+#    show-sql: false
+#    properties:
+#      hibernate:
+#        format_sql: true
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/plan_mate?useSSL=false&autoReconnect=true&autoReconnectForPools=true&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Seoul
+#    username: root
+#    password:
+#    hikari:
+#      connection-timeout: 9000
+#      idle-timeout: 150000
+#      max-lifetime: 300000
+#      maximum-pool-size: 5
+#      minimum-idle: 5
+#      data-source-properties:
+#        v$session.program: SampleDev
+#        cachePrepStmts: true
+#        prepStmtCacheSize: 250
+#        prepStmtCacheSqlLimit: 2048
+#        useServerPrepStmts: true
+#        useLocalSessionState: true
+#        rewriteBatchedStatements: true
+#        cacheResultSetMetadata: true
+#        cacheServerConfiguration: true
+#        elideSetAutoCommits: true
+#        maintainTimeStats: false
+#
+
+
+
+
 spring:
   application:
     name: planmate
   jpa:
     generate-ddl: false
     hibernate:
-      ddl-auto: update
-    show-sql: false
+      ddl-auto: create
+    show-sql: true   # SQL 쿼리 출력 활성화
     properties:
       hibernate:
-        format_sql: true
+        format_sql: true   # 쿼리를 보기 좋게 출력
   datasource:
     url: jdbc:mysql://localhost:3306/plan_mate?useSSL=false&autoReconnect=true&autoReconnectForPools=true&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Seoul
     username: root
@@ -31,3 +69,8 @@ spring:
         cacheServerConfiguration: true
         elideSetAutoCommits: true
         maintainTimeStats: false
+
+#logging:
+#  level:
+#    org.hibernate.SQL: DEBUG   # SQL 쿼리 로그 출력
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE   # 바인딩된 파라미터 로그 출력
