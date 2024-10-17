@@ -32,6 +32,7 @@ public class PlanController {
         return planService.getPlan(planId);
     }
 
+
     // 일정 생성
     @PostMapping("/api/plan")
     public PlanResponseDto createPlan(@RequestBody @Valid PlanRequestDto planRequestDto) {

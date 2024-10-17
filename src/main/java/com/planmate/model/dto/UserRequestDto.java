@@ -4,6 +4,7 @@ import com.planmate.config.PwEncoder;
 import com.planmate.model.define.Role;
 import com.planmate.model.entity.User;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,8 +23,14 @@ public class UserRequestDto {
 
     @Email
     private String email;
+
+    @NotEmpty
     private String username;
+
+    @NotEmpty
     private String password;
+
+    @NotEmpty
     private String role;
 
     public User toEntity(PwEncoder pwEncoder) {

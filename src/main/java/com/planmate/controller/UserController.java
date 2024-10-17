@@ -3,6 +3,7 @@ package com.planmate.controller;
 import com.planmate.model.dto.UserRequestDto;
 import com.planmate.model.dto.UserResponseDto;
 import com.planmate.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,7 +33,7 @@ public class UserController {
 
     // 사용자 생성
     @PostMapping("/api/user")
-    public UserResponseDto createUser(@RequestBody UserRequestDto userRequestDto) {
+    public UserResponseDto createUser(@RequestBody @Valid UserRequestDto userRequestDto) {
         return userService.createUser(userRequestDto);
     }
 
